@@ -49,7 +49,7 @@ public class ArcoRequest {
     @Column(name = "identity_verification_status", nullable = false) // enum
     private ArcoIdentityVerificationStatus identityVerificationStatus;
     
-    @Column(name = "request_channel", nullable = false)
+    @Column(name = "request_channel", nullable = false) // enum
     private String requestChannel;
     
     @Column(name = "submitted_at", nullable = false)
