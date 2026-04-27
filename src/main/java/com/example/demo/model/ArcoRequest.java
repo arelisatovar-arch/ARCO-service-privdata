@@ -3,6 +3,7 @@ package com.example.demo.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.example.demo.enums.arcoRequest.ArcoIdentityVerificationStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -45,9 +46,8 @@ public class ArcoRequest {
     @Column(name = "status", nullable = false)
     private ArcoStatus status; //pasar a enum, Listo
     
-    
     @Column(name = "identity_verification_status", nullable = false) // enum
-    private String identityVerificationStatus;
+    private ArcoIdentityVerificationStatus identityVerificationStatus;
     
     @Column(name = "request_channel", nullable = false)
     private String requestChannel;

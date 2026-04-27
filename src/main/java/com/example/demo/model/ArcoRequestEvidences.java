@@ -3,12 +3,11 @@ package com.example.demo.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.example.demo.enums.arcoRequestEvidence.ArcoEvidenceType;
+import com.example.demo.enums.arcoRequestEvidence.ArcoFileType;
+import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,8 +30,9 @@ public class ArcoRequestEvidences {
     @Column(name = "uploaded_by_user_id", nullable = false)
     private UUID uploadedByUserId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "evidence_type", nullable = false) //enum
-    private String evidenceType;
+    private ArcoEvidenceType evidenceType;
 
     @Column(name = "file_name", nullable = false)
     private String fileName;
@@ -40,8 +40,9 @@ public class ArcoRequestEvidences {
     @Column(name = "file_url", nullable = false)
     private String fileUrl;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "file_type", nullable = false) //enum
-    private String fileType;
+    private ArcoFileType fileType;
 
     @Column(name = "notas", nullable = false)
     private String notes;

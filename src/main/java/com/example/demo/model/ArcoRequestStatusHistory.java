@@ -3,6 +3,7 @@ package com.example.demo.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.example.demo.enums.arcoRequestStatusHistory.ArcoHistoryStatus;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
@@ -30,11 +31,12 @@ public class ArcoRequestStatusHistory {
     @Column(name = "change_by_user_id", nullable = false)
     private UUID changeByUserId;
 
+    //ambos enums usan el mismo enum
     @Column(name="previous_status",nullable= false) //enum
-    private String previousStatus;
+    private ArcoHistoryStatus previousStatus;
 
     @Column(name="new_status",nullable= false) //enum
-    private String newStatus;
+    private ArcoHistoryStatus newStatus;
 
     @UpdateTimestamp
     @Column(name="change_at",nullable= false)
