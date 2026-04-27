@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.example.demo.enums.arcoRequest.ArcoIdentityVerificationStatus;
+import com.example.demo.enums.arcoRequest.ArcoRequestChannel;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -26,6 +27,8 @@ public class ArcoRequest {
     @Id
     @GeneratedValue
     private UUID id;
+
+
     @Column(name="organization_id", nullable = false)
     private UUID organizationId;
     @Column(name="data_subject_id", nullable = false)
@@ -47,7 +50,7 @@ public class ArcoRequest {
     
     @Enumerated(EnumType.STRING)
     @Column(name = "request_channel", nullable = false)
-    private String requestChannel;
+    private ArcoRequestChannel requestChannel;
     
     @Column(name = "submitted_at", nullable = false)
     private LocalDateTime submittedAt;
@@ -58,10 +61,10 @@ public class ArcoRequest {
     @Column(name = "description", nullable = false)
     private String description;
     
-    @Column(name = "resolution_summary" , nullable = false)
+    @Column(name = "resolution_summary", nullable = true)
     private String resolutionSummary;
     
-    @Column(name = "resolved_at", nullable = false)
+    @Column(name = "resolved_at", nullable = true)
     private LocalDateTime resolvedAt;
     
     @CreationTimestamp
