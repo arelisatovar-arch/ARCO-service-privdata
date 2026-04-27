@@ -46,9 +46,10 @@ public class ArcoRequest {
     @Column(name = "status", nullable = false)
     private ArcoStatus status; //pasar a enum, Listo
     
-    @Column(name = "identity_verification_status", nullable = false) // enum
+    @Column(name = "identity_verification_status", nullable = false) 
     private ArcoIdentityVerificationStatus identityVerificationStatus;
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "request_channel", nullable = false)
     private String requestChannel;
     

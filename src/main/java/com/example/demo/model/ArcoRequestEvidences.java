@@ -31,7 +31,7 @@ public class ArcoRequestEvidences {
     private UUID uploadedByUserId;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "evidence_type", nullable = false) //enum
+    @Column(name = "evidence_type", nullable = false) 
     private ArcoEvidenceType evidenceType;
 
     @Column(name = "file_name", nullable = false)
@@ -41,7 +41,7 @@ public class ArcoRequestEvidences {
     private String fileUrl;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "file_type", nullable = false) //enum
+    @Column(name = "file_type", nullable = false) 
     private ArcoFileType fileType;
 
     @Column(name = "notas", nullable = false)
