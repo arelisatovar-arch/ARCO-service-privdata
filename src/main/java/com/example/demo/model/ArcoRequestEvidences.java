@@ -24,8 +24,8 @@ public class ArcoRequestEvidences {
     @GeneratedValue
     private UUID id;
     
-    @Column(name = "arco_request_id", nullable = false)
-    private UUID arcoRequestId; 
+//    @Column(name = "arco_request_id", nullable = false)
+//    private UUID arcoRequestId;
     
     @Column(name = "uploaded_by_user_id", nullable = false)
     private UUID uploadedByUserId;
@@ -50,4 +50,9 @@ public class ArcoRequestEvidences {
     @UpdateTimestamp
     @Column(name = "uploaded_at", nullable = false)
     private LocalDateTime uploadedAt;
+
+    //relaciones
+    @ManyToOne
+    @JoinColumn(name = "arco_request_id", nullable = false)
+    private ArcoRequest arcoRequest;
 }

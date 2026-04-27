@@ -1,9 +1,7 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.example.demo.enums.arcoRequestAction.ArcoActionType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,12 +21,13 @@ public class ArcoRequestActions {
     @GeneratedValue
     private UUID id;
 
-    @Column(name = "arco_request_id", nullable = false)
-    private UUID arcoRequestId;
+//    @Column(name = "arco_request_id", nullable = false)
+//    private UUID arcoRequestId;
     @Column(name = "executed_by_user_id", nullable = false)
     private UUID executedByUserId;
+    @Enumerated(EnumType.STRING)
     @Column(name = "action_type", nullable = false)
-    private String actionType;
+    private ArcoActionType actionType;
     @Column(name = "result_summary", nullable = false)
     private String resultSummary;
     @Column(name = "artifact_url", nullable = false)
@@ -36,4 +35,8 @@ public class ArcoRequestActions {
     @CreationTimestamp
     @Column(name = "executed_at", nullable = false)
     private LocalDateTime executedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "arco_request_id", nullable = false)
+    private ArcoRequest arcoRequest;
 }

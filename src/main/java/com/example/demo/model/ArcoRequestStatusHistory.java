@@ -4,12 +4,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.example.demo.enums.arcoRequestStatusHistory.ArcoHistoryStatus;
+import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +22,8 @@ public class ArcoRequestStatusHistory {
     @GeneratedValue
     private UUID id;
 
-    @Column(name = "arco_request_id", nullable = false)
-    private UUID arcoRequestId;
+//    @Column(name = "arco_request_id", nullable = false)
+//    private UUID arcoRequestId;
 
     @Column(name = "change_by_user_id", nullable = false)
     private UUID changeByUserId;
@@ -44,4 +41,8 @@ public class ArcoRequestStatusHistory {
 
     @Column(name="comment",nullable= false)
     private String comment;
+
+    @ManyToOne
+    @JoinColumn(name = "arco_request_id", nullable = false)
+    private ArcoRequest arcoRequest;
 }

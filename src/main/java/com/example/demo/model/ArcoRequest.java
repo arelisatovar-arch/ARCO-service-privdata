@@ -1,21 +1,17 @@
 package com.example.demo.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import com.example.demo.enums.arcoRequest.ArcoIdentityVerificationStatus;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.example.demo.enums.arcoRequest.ArcoRequestType;
 import com.example.demo.enums.arcoRequest.ArcoStatus;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -75,6 +71,16 @@ public class ArcoRequest {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    //relaciones
+    @OneToMany(mappedBy = "arcoRequest")
+    private List<ArcoRequestEvidences> evidences;
+
+    @OneToMany(mappedBy = "arcoRequest")
+    private List<ArcoRequestActions> actions;
+
+    @OneToMany(mappedBy = "arcoRequest")
+    private List<ArcoRequestStatusHistory> statusHistory;
 
 
 }
